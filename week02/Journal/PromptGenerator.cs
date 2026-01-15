@@ -5,43 +5,105 @@ using System.Collections.Generic;
 
 public class PromptGenerator
 {
-    public List<string> _prompts = new List<string>
+    // Lista de prompts generales
+    private List<string> _prompts = new List<string>
     {
-        "Who was the most interesting person I interacted with today?",
-        "What was the best part of my day?",
-        "How did I see the hand of the Lord in my life today?",
-        "What was the strongest emotion I felt today?",
-        "If I had one thing I could do over today, what would it be?",
-        "What made me smile today?",
-        "What lesson did I learn today?",
-        "What am I grateful for today?",  
-        "What challenged me today?",  
-        "Who could I serve tomorrow?"  
+        "What was the most interesting thing that happened today?",
+        "What are you grateful for today?",
+        "What challenged you today and how did you overcome it?",
+        "What did you learn today?",
+        "Who made you smile today and why?",
+        "What are you looking forward to tomorrow?",
+        "What was a small victory you had today?",
+        "How did you take care of yourself today?",
+        "What would you do differently if you could relive today?",
+        "What made you feel proud today?",
+        "Describe a conversation that stuck with you today.",
+        "What was the most beautiful thing you saw today?",
+        "What made you laugh today?",
+        "What is something new you tried or learned today?",
+        "How did you help someone today, or how did someone help you?"
     };
-    
+
+    // Prompts organizados por estado de ánimo
+    private Dictionary<string, List<string>> _moodPrompts = new Dictionary<string, List<string>>
+    {
+        {
+            "happy", new List<string>
+            {
+                "What made you feel exceptionally happy today?",
+                "Share a moment of pure joy from your day",
+                "What are you celebrating or appreciating right now?",
+                "What positive energy are you bringing into your life?",
+                "Who or what brought sunshine to your day?"
+            }
+        },
+        {
+            "sad", new List<string>
+            {
+                "What's weighing on your heart today?",
+                "How can you be kinder to yourself right now?",
+                "What do you need to release or let go of?",
+                "What comfort are you seeking today?",
+                "What small thing could lift your spirits right now?"
+            }
+        },
+        {
+            "neutral", new List<string>
+            {
+                "Describe your day in detail from start to finish",
+                "What was the most ordinary moment of your day?",
+                "What routines or habits brought you comfort today?",
+                "What did you notice about your surroundings today?",
+                "How did you spend your quiet moments today?"
+            }
+        }
+    };
+
+    // Obtener un prompt aleatorio
     public string GetRandomPrompt()
     {
         Random random = new Random();
         int index = random.Next(_prompts.Count);
         return _prompts[index];
     }
-    
+
+    // Obtener prompt según el estado de ánimo
     public string GetPromptByMood(string mood)
     {
-        Dictionary<string, List<string>> moodPrompts = new Dictionary<string, List<string>>
+        string moodLower = mood.ToLower();
+
+        if (_moodPrompts.ContainsKey(moodLower))
         {
-            {"happy", new List<string> {"What made today awesome?", "What are you excited about?"}},
-            {"sad", new List<string> {"What support do you need?", "What small win happened today?"}},
-            {"neutral", new List<string> {"What surprised you today?", "What are you looking forward to?"}}
-        };
-        
-        if (moodPrompts.ContainsKey(mood.ToLower()))
-        {
+            List<string> prompts = _moodPrompts[moodLower];
             Random random = new Random();
-            int index = random.Next(moodPrompts[mood.ToLower()].Count);
-            return moodPrompts[mood.ToLower()][index];
+            int index = random.Next(prompts.Count);
+            return prompts[index];
         }
-        
+
+        // Si el estado de ánimo no está en la lista, usar prompt aleatorio
         return GetRandomPrompt();
+    }
+
+    // Método para mostrar todos los prompts disponibles (útil para debugging)
+    public void ShowAllPrompts()
+    {
+        Console.WriteLine("\n=== AVAILABLE PROMPTS ===");
+        Console.WriteLine("\nGeneral Prompts:");
+        for (int i = 0; i < _prompts.Count; i++)
+        {
+            Console.WriteLine($"  {i + 1}. {_prompts[i]}");
+        }
+
+        Console.WriteLine("\nMood-Based Prompts:");
+        foreach (var mood in _moodPrompts.Keys)
+        {
+            Console.WriteLine($"\n  {mood.ToUpper()}:");
+            for (int i = 0; i < _moodPrompts[mood].Count; i++)
+            {
+                Console.WriteLine($"    - {_moodPrompts[mood][i]}");
+            }
+        }
+        Console.WriteLine(new string('=', 30));
     }
 }
