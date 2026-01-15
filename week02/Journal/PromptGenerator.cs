@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class PromptGenerator
 {
-    // Lista de prompts generales
+    //List of general prompts
     private List<string> _prompts = new List<string>
     {
         "What was the most interesting thing that happened today?",
@@ -25,7 +25,7 @@ public class PromptGenerator
         "How did you help someone today, or how did someone help you?"
     };
 
-    // Prompts organizados por estado de ánimo
+    // Prompts organized by mood
     private Dictionary<string, List<string>> _moodPrompts = new Dictionary<string, List<string>>
     {
         {
@@ -60,7 +60,7 @@ public class PromptGenerator
         }
     };
 
-    // Obtener un prompt aleatorio
+    // Get a random prompt
     public string GetRandomPrompt()
     {
         Random random = new Random();
@@ -68,7 +68,7 @@ public class PromptGenerator
         return _prompts[index];
     }
 
-    // Obtener prompt según el estado de ánimo
+    // Get prompts based on mood
     public string GetPromptByMood(string mood)
     {
         string moodLower = mood.ToLower();
@@ -81,11 +81,11 @@ public class PromptGenerator
             return prompts[index];
         }
 
-        // Si el estado de ánimo no está en la lista, usar prompt aleatorio
+        // If the mood is not on the list, use a random prompt
         return GetRandomPrompt();
     }
 
-    // Método para mostrar todos los prompts disponibles (útil para debugging)
+    // Method to display all available prompts 
     public void ShowAllPrompts()
     {
         Console.WriteLine("\n=== AVAILABLE PROMPTS ===");

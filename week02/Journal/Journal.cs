@@ -6,10 +6,10 @@ using System.IO;
 
 public class Journal
 {
-    // Lista para almacenar las entradas
+    // Ready to store entries
     private List<Entry> _entries = new List<Entry>();
 
-    // Agregar una nueva entrada
+    // Add a new entry
     public void AddEntry(Entry newEntry)
     {
         if (newEntry != null)
@@ -18,7 +18,7 @@ public class Journal
         }
     }
 
-    // Mostrar todas las entradas
+    // Show all entries
     public void DisplayAll()
     {
         Console.WriteLine("\n" + new string('=', 50));
@@ -42,13 +42,13 @@ public class Journal
         Console.WriteLine(new string('=', 50) + "\n");
     }
 
-    // Obtener número de entradas
+    // Get number of entries
     public int GetEntryCount()
     {
         return _entries.Count;
     }
 
-    // Buscar entradas por palabra clave
+    // Search entries by keyword
     public void SearchEntries(string keyword)
     {
         if (string.IsNullOrWhiteSpace(keyword))
@@ -95,7 +95,7 @@ public class Journal
         Console.WriteLine(new string('=', 50) + "\n");
     }
 
-    // Guardar en archivo
+    // Save to file
     public void SaveToFile(string file)
     {
         if (string.IsNullOrWhiteSpace(file))
@@ -106,7 +106,7 @@ public class Journal
 
         try
         {
-            // Verificar si el archivo ya existe
+            // Check if the file already exists
             if (File.Exists(file))
             {
                 Console.Write($"\nFile '{file}' already exists. Overwrite? (y/n): ");
@@ -117,12 +117,12 @@ public class Journal
                 }
             }
 
-            // Guardar todas las entradas
+            // Save all entries
             using (StreamWriter outputFile = new StreamWriter(file))
             {
                 foreach (Entry entry in _entries)
                 {
-                    // Reemplazar saltos de línea para mantener el formato
+                    // Replace line breaks to maintain formatting
                     string safeEntryText = entry._entryText?.Replace("\n", "\\n").Replace("\r", "\\r");
                     string safePromptText = entry._promptText?.Replace("\n", "\\n").Replace("\r", "\\r");
 
@@ -138,7 +138,7 @@ public class Journal
         }
     }
 
-    // Cargar desde archivo
+    // Load from file
     public void LoadFromFile(string file)
     {
         if (string.IsNullOrWhiteSpace(file))
@@ -149,14 +149,14 @@ public class Journal
 
         try
         {
-            // Verificar si el archivo existe
+            // Check if the file exists
             if (!File.Exists(file))
             {
                 Console.WriteLine($"\n❌ File '{file}' not found.");
                 return;
             }
 
-            // Preguntar si se deben conservar las entradas actuales
+            // Ask if current entries should be retained
             if (_entries.Count > 0)
             {
                 Console.Write($"\nYou have {_entries.Count} unsaved entries in memory. Loading will replace them. Continue? (y/n): ");
@@ -167,10 +167,10 @@ public class Journal
                 }
             }
 
-            // Limpiar entradas actuales
+            // Clear current entries
             _entries.Clear();
 
-            // Leer todas las líneas del archivo
+            // Read all lines of the file
             string[] lines = File.ReadAllLines(file);
             int loadedCount = 0;
 
@@ -186,7 +186,7 @@ public class Journal
                     Entry loadedEntry = new Entry();
                     loadedEntry._date = parts[0];
 
-                    // Restaurar saltos de línea
+                    // Restore line breaks
                     loadedEntry._promptText = parts[1]?.Replace("\\n", "\n").Replace("\\r", "\r");
                     loadedEntry._entryText = parts[2]?.Replace("\\n", "\n").Replace("\\r", "\r");
                     loadedEntry._mood = parts[3];

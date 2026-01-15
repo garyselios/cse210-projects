@@ -28,19 +28,19 @@ class Program
 
             if (choice == "1")
             {
-                // Crear nueva entrada
+                // Create new entry
                 Entry newEntry = new Entry();
 
-                // Obtener fecha actual
+                // Get current dat
                 DateTime currentTime = DateTime.Now;
                 newEntry._date = currentTime.ToShortDateString();
 
-                // Obtener estado de ánimo
+                // Get mood
                 Console.Write("\nHow are you feeling? (happy/sad/neutral/other): ");
                 string mood = Console.ReadLine();
                 newEntry._mood = mood;
 
-                // Obtener prompt según el estado de ánimo
+                // Get prompts based on mood
                 if (mood.ToLower() == "happy" || mood.ToLower() == "sad" || mood.ToLower() == "neutral")
                 {
                     newEntry._promptText = promptGen.GetPromptByMood(mood);
@@ -50,44 +50,44 @@ class Program
                     newEntry._promptText = promptGen.GetRandomPrompt();
                 }
 
-                // Obtener respuesta del usuario
+                // Get response from user
                 Console.WriteLine($"\nPrompt: {newEntry._promptText}");
                 Console.Write("Your response: ");
                 newEntry._entryText = Console.ReadLine();
 
-                // Agregar entrada al diario
+                // Add journal entry
                 journal.AddEntry(newEntry);
                 Console.WriteLine($"\n✓ Entry saved! Total entries: {journal.GetEntryCount()}");
             }
             else if (choice == "2")
             {
-                // Mostrar todas las entradas
+                // Show all entries
                 journal.DisplayAll();
             }
             else if (choice == "3")
             {
-                // Guardar en archivo
+                // Save to file
                 Console.Write("Enter filename to save (e.g., myjournal.txt): ");
                 string saveFile = Console.ReadLine();
                 journal.SaveToFile(saveFile);
             }
             else if (choice == "4")
             {
-                // Cargar desde archivo
+                // Load from file
                 Console.Write("Enter filename to load: ");
                 string loadFile = Console.ReadLine();
                 journal.LoadFromFile(loadFile);
             }
             else if (choice == "5")
             {
-                // Buscar entradas
+                // Search entries
                 Console.Write("Enter keyword to search: ");
                 string keyword = Console.ReadLine();
                 journal.SearchEntries(keyword);
             }
             else if (choice == "6")
             {
-                // Salir
+                // Go out
                 Console.WriteLine("\nGoodbye! Keep writing!");
             }
             else

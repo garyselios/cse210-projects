@@ -4,13 +4,13 @@ using System;
 
 public class Entry
 {
-    // Campos públicos
+    // Public fields
     public string _date;
     public string _promptText;
     public string _entryText;
     public string _mood;
 
-    // Constructor vacío
+    // Empty constructor
     public Entry()
     {
         _date = "";
@@ -19,13 +19,13 @@ public class Entry
         _mood = "";
     }
 
-    // Método para mostrar la entrada
+    // Method for displaying the input
     public void Display()
     {
         Console.WriteLine($"Date: {_date}");
         Console.WriteLine($"Mood: {_mood}");
         Console.WriteLine($"Prompt: {_promptText}");
         Console.WriteLine($"Entry: {_entryText}");
-        Console.WriteLine(); // Línea en blanco para separación
+        Console.WriteLine(); // Blank line for separation
     }
 }
