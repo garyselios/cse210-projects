@@ -1,9 +1,6 @@
-
 {
     "version": "0.2.0",
     "configurations": [
-        
-
         {
             "name": "Sandbox Project",
             "type": "coreclr",
@@ -16,7 +13,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 01: C# Exercise 1",
             "type": "coreclr",
@@ -29,7 +25,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 01: C# Exercise 2",
             "type": "coreclr",
@@ -42,7 +37,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 01: C# Exercise 3",
             "type": "coreclr",
@@ -55,7 +49,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 01: C# Exercise 4",
             "type": "coreclr",
@@ -68,7 +61,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 01: C# Exercise 5",
             "type": "coreclr",
@@ -81,7 +73,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 02: Resumes",
             "type": "coreclr",
@@ -94,7 +85,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 02: Journal",
             "type": "coreclr",
@@ -107,7 +97,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 03: Fractions",
             "type": "coreclr",
@@ -120,7 +109,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 03: Scripture Memorizer",
             "type": "coreclr",
@@ -133,7 +121,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 04: YouTube Videos",
             "type": "coreclr",
@@ -146,7 +133,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 04: Online Ordering",
             "type": "coreclr",
@@ -159,7 +145,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 05: Homework",
             "type": "coreclr",
@@ -172,7 +157,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 05: Mindfulness",
             "type": "coreclr",
@@ -185,7 +169,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 06: Shapes",
             "type": "coreclr",
@@ -198,7 +181,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 06: Eternal Quest",
             "type": "coreclr",
@@ -211,7 +193,6 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
         {
             "name": "Week 07: Exercise Tracking",
             "type": "coreclr",
@@ -224,6 +205,5 @@
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
-
     ]
 }
