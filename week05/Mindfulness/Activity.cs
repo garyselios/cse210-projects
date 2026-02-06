@@ -4,19 +4,17 @@ using System.Threading;
 
 public class Activity
 {
-    // Protected member variables - accessible by derived classes
-    protected string _name;
-    protected string _description;
-    protected int _duration; // in seconds
+    // Private member variables - following _underscoreCamelCase convention
+    private string _name;
+    private string _description;
+    private int _duration; // in seconds
 
-    // Constructor
     public Activity(string name, string description)
     {
         _name = name;
         _description = description;
     }
 
-    // Method to display starting message for all activities
     public void DisplayStartingMessage()
     {
         Console.Clear();
@@ -25,16 +23,29 @@ public class Activity
         Console.WriteLine(_description);
         Console.WriteLine();
 
-        // Ask for duration
-        Console.Write("How many seconds would you like for this activity? ");
-        _duration = int.Parse(Console.ReadLine());
+        // Get duration with input validation
+        bool validInput = false;
+        while (!validInput)
+        {
+            Console.Write("How many seconds would you like for this activity? ");
+            string input = Console.ReadLine();
+
+            if (int.TryParse(input, out int seconds) && seconds > 0)
+            {
+                _duration = seconds;
+                validInput = true;
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid positive number.");
+            }
+        }
 
         Console.WriteLine();
         Console.WriteLine("Prepare to begin...");
         ShowSpinner(3);
     }
 
-    // Method to display ending message for all activities
     public void DisplayEndingMessage()
     {
         Console.WriteLine();
@@ -45,7 +56,6 @@ public class Activity
         ShowSpinner(3);
     }
 
-    // Method to show spinner animation
     public void ShowSpinner(int seconds)
     {
         List<string> animation = new List<string> { "|", "/", "-", "\\" };
@@ -59,21 +69,32 @@ public class Activity
             string frame = animation[i];
             Console.Write(frame);
             Thread.Sleep(200);
-            Console.Write("\b \b"); // Erase the character
+            Console.Write("\b \b"); // Erase the character using backspace
 
             i++;
             if (i >= animation.Count) i = 0;
         }
     }
 
-    // Method to show countdown
     public void ShowCountdown(int seconds)
     {
         for (int i = seconds; i > 0; i--)
         {
             Console.Write(i);
             Thread.Sleep(1000);
-            Console.Write("\b \b"); // Erase the number
+            Console.Write("\b \b"); // Erase the number using backspace
         }
+    }
+
+    public int GetDuration()
+    {
+        return _duration;
+    }
+
+    public virtual void Run()
+    {
+        // Base implementation - derived classes will override
+        DisplayStartingMessage();
+        DisplayEndingMessage();
     }
 }

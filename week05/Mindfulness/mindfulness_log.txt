@@ -1,0 +1,4 @@
+2026-02-06 16:19:47,BreathingActivity,20
+2026-02-06 16:20:35,BreathingActivity,10
+2026-02-06 16:21:11,ReflectingActivity,10
+2026-02-06 16:21:45,ListingActivity,10

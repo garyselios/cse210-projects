@@ -1,35 +1,37 @@
 using System;
+using System.Threading;
 
 public class BreathingActivity : Activity
 {
-    // Constructor - calls base constructor with specific name and description
     public BreathingActivity()
-        : base("Breathing",
+        : base("Breathing Activity",
               "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.")
     {
     }
 
-    // Main method to run the breathing activity
-    public void Run()
+
+    public override void Run()
     {
         DisplayStartingMessage();
 
         Console.Clear();
-        Console.WriteLine("Begin...");
+        Console.WriteLine("Get ready...");
+        ShowSpinner(3);
 
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(_duration);
+        int duration = GetDuration();
+        int cycles = duration / 10; // Each breath cycle takes 10 seconds (4 in, 6 out)
+        if (cycles == 0) cycles = 1; // Ensure at least one cycle
 
-        // Alternate between "Breathe in" and "Breathe out"
-        while (DateTime.Now < endTime)
+        for (int i = 0; i < cycles; i++)
         {
             Console.WriteLine();
             Console.Write("Breathe in... ");
-            ShowCountdown(4); // 4 seconds to breathe in
+            ShowCountdown(4);
 
             Console.WriteLine();
-            Console.Write("Breathe out... ");
-            ShowCountdown(4); // 4 seconds to breathe out
+            Console.Write("Now breathe out... ");
+            ShowCountdown(4);
+            Console.WriteLine();
         }
 
         DisplayEndingMessage();
