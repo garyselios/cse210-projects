@@ -1,0 +1,4 @@
+Score:0
+Completed:0
+SimpleGoal:house:Buy my house:5:False
+EternalGoal:Eternal Family:Obtain my eternal family:10

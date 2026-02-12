@@ -1,6 +1,0 @@
-Score:20
-Completed:0
-SimpleGoal:futbol:diversion:3:False
-EternalGoal:templo:familia:10
-ChecklistGoal:verificar:visualizar:10:0:4:10
-ChecklistGoal:otro:otro:2:0:2:2
