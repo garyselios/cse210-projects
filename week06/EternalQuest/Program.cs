@@ -83,7 +83,7 @@ class Program
         Console.Write("What is a short description of it? ");
         string description = Console.ReadLine();
 
-        // VALIDATION ADDED: Safe number input for points
+        //Safe number input for points
         int points = 0;
         bool validPoints = false;
         while (!validPoints)
@@ -111,7 +111,7 @@ class Program
         }
         else if (type == "3")
         {
-            // VALIDATION ADDED: Safe number input for target
+            //Safe number input for target
             int target = 0;
             bool validTarget = false;
             while (!validTarget)
@@ -129,7 +129,7 @@ class Program
                 }
             }
 
-            // VALIDATION ADDED: Safe number input for bonus
+            //Safe number input for bonus
             int bonus = 0;
             bool validBonus = false;
             while (!validBonus)
@@ -187,7 +187,7 @@ class Program
             Console.WriteLine($"{i + 1}. {goals[i].GetName()}");
         }
 
-        // VALIDATION ADDED: Safe number input for goal selection
+        //Safe number input for goal selection
         int index = -1;
         bool validSelection = false;
 
